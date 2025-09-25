@@ -1,0 +1,11 @@
+<nav class="main-nav">
+  <div class="brand">Transport App</div>
+  <div class="links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/add" routerLinkActive="active">Add Ride</a>
+  </div>
+</nav>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

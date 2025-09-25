@@ -1,0 +1,36 @@
+<section class="card">
+  <div class="filters">
+    <div>
+      <label>Vehicle</label>
+      <select [(ngModel)]="vehicleFilter" (change)="load()">
+        <option [ngValue]="undefined">All</option>
+        <option [ngValue]="'Car'">Car</option>
+        <option [ngValue]="'Bike'">Bike</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Reference time</label>
+      <input type="time" [(ngModel)]="timeFilter" (change)="load()" />
+    </div>
+
+    <div class="refresh">
+      <button (click)="refresh()">Refresh</button>
+    </div>
+  </div>
+
+  <div *ngIf="rides.length === 0" class="empty">No rides found</div>
+
+  <ul class="ride-list">
+    <li *ngFor="let r of rides" class="ride-item">
+      <div class="left">
+        <div class="title">{{ r.vehicleType }} • {{ r.vehicleNo }}</div>
+        <div class="meta">Owner: {{ r.ownerEmployeeId }} · Seats: {{ r.vacantSeats }} · {{ r.timeIso | date:'shortTime' }}</div>
+        <div class="route">{{ r.pickupPoint }} → {{ r.destination }}</div>
+      </div>
+      <div class="right">
+        <button (click)="onBook(r)">Book</button>
+      </div>
+    </li>
+  </ul>
+</section>

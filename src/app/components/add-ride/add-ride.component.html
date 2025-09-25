@@ -1,0 +1,67 @@
+<section class="card">
+  <h2>Add Ride (for today only)</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="form-grid">
+    <div class="field">
+      <label>Owner Employee ID <span class="required">*</span></label>
+      <input formControlName="ownerEmployeeId" required />
+      <small class="error" *ngIf="form.controls.ownerEmployeeId.touched && form.controls.ownerEmployeeId.invalid">
+        Employee ID is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label>Vehicle Type <span class="required">*</span></label>
+      <select formControlName="vehicleType" required>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+      </select>
+      <small class="error" *ngIf="form.controls.vehicleType.touched && form.controls.vehicleType.invalid">
+        Vehicle type is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label>Vehicle No <span class="required">*</span></label>
+      <input formControlName="vehicleNo" required />
+      <small class="error" *ngIf="form.controls.vehicleNo.touched && form.controls.vehicleNo.invalid">
+        Vehicle number is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label>Vacant Seats <span class="required">*</span></label>
+      <input type="number" min="1" formControlName="vacantSeats" required />
+      <small class="error" *ngIf="form.controls.vacantSeats.touched && form.controls.vacantSeats.invalid">
+        Vacant seats must be at least 1.
+      </small>
+    </div>
+
+    <div class="field">
+      <label>Time (today) <span class="required">*</span></label>
+      <input type="time" formControlName="time" required />
+      <small class="error" *ngIf="form.controls.time.touched && form.controls.time.invalid">
+        Time is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label>Pickup Point <span class="required">*</span></label>
+      <input formControlName="pickupPoint" required />
+      <small class="error" *ngIf="form.controls.pickupPoint.touched && form.controls.pickupPoint.invalid">
+        Pick-up point is required.
+      </small>
+    </div>
+
+    <div class="field">
+      <label>Destination <span class="required">*</span></label>
+      <input formControlName="destination" required />
+      <small class="error" *ngIf="form.controls.destination.touched && form.controls.destination.invalid">
+        Destination is required.
+      </small>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="form.invalid">Add Ride</button>
+    </div>
+  </form>
+</section>
